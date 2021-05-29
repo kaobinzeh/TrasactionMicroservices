@@ -10,7 +10,7 @@ namespace TransactionMicroserviceApi.Entities
         public string WalletAddress { get; private set; }
         public string RecieverWalletAddress { get; private set; }
         public string CurrencyType { get; private set; }
-        public DateTime CreateAt { get; private set; }
+        public DateTime CreateAt { get; private set; }  
 
         public Transactions()
         {
