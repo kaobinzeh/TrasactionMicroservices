@@ -16,3 +16,4 @@ There are two endpoints the Update Transaction and Get transaction, the update i
         "currencyType":"string"
       }
  
+The Get transaction takes an Id of type guid which is the Id off the updated transaction and retrieves the transaction details.  
