@@ -10,19 +10,19 @@ namespace TransactionMicroserviceApi.DependencyInjection
     {
         protected override void Load(ContainerBuilder builder)
         {
-            var assembly = typeof(Startup).Assembly;
+            builder.RegisterAssemblyTypes(typeof(Startup).Assembly)
+                .AsImplementedInterfaces();
+            //var assembly = typeof(Startup).Assembly;
 
-            //builder.RegisterInstance<DbContext>();
+            //builder.RegisterAssemblyTypes(assembly)
+            //   .Where(t => t.Name.Contains("Repository"))
+            //   .AsImplementedInterfaces()
+            //   .InstancePerLifetimeScope();
 
+            //builder.RegisterAssemblyTypes(assembly)
+            //   .Where(t => t.Name.Contains("Handler"))
+            //   .AsImplementedInterfaces();
 
-            builder.RegisterAssemblyTypes(assembly)
-               .Where(t => t.Name.Contains("Handler"))
-               .AsImplementedInterfaces();
-
-            builder.RegisterAssemblyTypes(assembly)
-               .Where(t => t.Name.Contains("Repository"))
-               .AsImplementedInterfaces()
-               .InstancePerLifetimeScope();
 
             builder.AddDispatchers();
         }

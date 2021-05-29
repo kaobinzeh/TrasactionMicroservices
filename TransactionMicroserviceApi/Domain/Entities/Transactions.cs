@@ -12,29 +12,33 @@ namespace TransactionMicroserviceApi.Entities
         public string CurrencyType { get; private set; }
         public DateTime CreateAt { get; private set; }
 
+        public Transactions()
+        {
+        }
+
         public Transactions(UpdateTransaction command)
         {
-            if (Id == Guid.Empty)
+            if (command.Id == Guid.Empty)
             {
                 throw new Exception("Invalid Transaction Id");
             }
 
-            if (string.IsNullOrEmpty(ClientId))
+            if (string.IsNullOrEmpty(command.ClientId))
             {
                 throw new Exception("Invalid Client Id");
             }
 
-            if (string.IsNullOrEmpty(WalletAddress))
+            if (string.IsNullOrEmpty(command.WalletAddress))
             {
                 throw new Exception("Invalid Wallet Address");
             }
             
-            if (string.IsNullOrEmpty(RecieverWalletAddress))
+            if (string.IsNullOrEmpty(command.RecieverWalletAddress))
             {
                 throw new Exception("Invalid Reciever Wallet Address Address");
             }
 
-            if (string.IsNullOrEmpty(CurrencyType))
+            if (string.IsNullOrEmpty(command.CurrencyType))
             {
                 throw new Exception("Invalid Currency Type ");
             }

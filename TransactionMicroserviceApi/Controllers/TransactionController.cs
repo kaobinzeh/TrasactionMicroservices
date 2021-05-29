@@ -28,8 +28,8 @@ namespace TransactionMicroserviceApi.Controllers
             return Accepted();
         }
 
-        [HttpGet("{id:guid}")]
-        public async Task<ActionResult<TransactionDto>> Get(GetTransaction trans)
+        [HttpGet("{Id:guid}")]
+        public async Task<ActionResult<TransactionDto>> Get([FromRoute] GetTransaction trans)
         {
             var transaction = await _dispatcher.QueryAsync(trans);
             if (transaction is null)

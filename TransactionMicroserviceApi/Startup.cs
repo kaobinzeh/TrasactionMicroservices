@@ -26,7 +26,6 @@ namespace TransactionMicroserviceApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //var connectionString = Configuration.GetConnectionString("DefualtConnection");
             services.AddDbContext<ApplicationDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefualtConnection")));
 
             services.AddSwaggerGen(c =>
@@ -34,10 +33,8 @@ namespace TransactionMicroserviceApi
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TransactionMicroserviceApi", Version = "v1" });
             });
 
-
-            //services.AddDispatcherService();
-            //services.AddHandlers();
-            services.AddControllers();
+            services.AddControllers()
+                    .AddNewtonsoftJson();
             services.AddOptions();
         }
 
